@@ -1,31 +1,29 @@
 package me.jordan.lab9;
 
-public class Person {
+public class Student extends Person {
+    private static int highestNum;
 
-    public final String ID;
-    public String firstName;
-    public String lastName;
+    public boolean likesSchool;
+    private String major;
 
-    public Person(String first, String last) {
-        this(first, last, first+last);
+    public Student(String first, String last, String id) {
+        super(first, last, String.format("C%o7", highestNum));
     }
 
-    public Person(String first, String last, String id) {
-        ID = id;
-        firstName = first;
-        lastName = last;
-    }
-
+    @Override
     public void sayHelloTo(String name) {
-        System.out.println("Hey " + name + "! My name is " + firstName + ".");
+        System.out.println("Hey " + name + "! My name is " + firstName + ", my major is " + major + ".");
     }
 
+    @Override
     public void sayHelloTo(Person person) {
         sayHelloTo(person.firstName);
     }
 
     @Override
     public String toString() {
-        return "Person: " + firstName + " " + lastName + " (" + ID + ")";
+        return "Person: " + firstName + " " + lastName + " (" + ID + ", likes school: " + likesSchool + ")";
     }
+
+
 }
